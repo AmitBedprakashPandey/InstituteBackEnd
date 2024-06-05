@@ -4,11 +4,10 @@ const Enquiry = require("../Model/EnquiryModel");
 const createEnquiry = async (req, res) => {
   try {
     const data = new Enquiry(req.body);
-
     const enquiry = await Enquiry.create(data);
-
     res.status(200).json({ message: "Create Sucessfully", data: enquiry });
   } catch (error) {
+    console.log(error);
     res.status(400).json({ message: error.message });
   }
 };
@@ -17,7 +16,7 @@ const createEnquiry = async (req, res) => {
 const getAllEnquirys = async (req, res) => {
   try {
     const enquirys = await Enquiry.find();
-    res.json(enquirys);
+    res.json({ enquirys });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -30,7 +29,7 @@ const getEnquiryById = async (req, res) => {
     if (!enquiry) {
       return res.status(404).json({ error: "Enquiry not found" });
     }
-    res.status(200).json(enquiry);
+    res.status(200).json([enquiry]);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -71,5 +70,4 @@ module.exports = {
   getEnquiryById,
   updateEnquiryById,
   deleteEnquiryById,
-  
 };

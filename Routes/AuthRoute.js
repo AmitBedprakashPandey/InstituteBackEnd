@@ -9,7 +9,7 @@ router.post('/register', register);
 // Login
 router.post('/login', login);
 
-router.post('/find/:email', findloger);
+router.post('/find/:email' , findloger);
 
 // Protected route (example)
 router.get('/protected', verifyToken, (req, res) => {

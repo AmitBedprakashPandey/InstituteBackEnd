@@ -22,15 +22,12 @@ const corsOptions = {
 };
 
 app.use(cors());
-
+const databse = process.env.DB_URL;
 // Connect to MongoDB
 mongoose
-  .connect(
-    "mongodb://127.0.0.1:27017/institute?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.6",
-    {
-      useNewUrlParser: true,
-    }
-  )
+  .connect(databse, {
+    useNewUrlParser: true,
+  })
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Could not connect to MongoDB", err));
 
@@ -45,15 +42,16 @@ const AssignCourseRoutes = require("./Routes/AssignCourseRoutes");
 const CourseRoutes = require("./Routes/CourseRoutes");
 const authRoutes = require("./Routes/AuthRoute");
 const feesRoutes = require("./Routes/FeesRoutes");
-const verifyToken = require("./Controllers/Middleware/AuthMiddleware");
+const CourseTypeRoutes = require("./Routes/CourseTypeRoutes");
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.use("/api",verifyToken, AdmissionRoutes);
-app.use("/api",verifyToken, EnquiryRoutes);
-app.use("/api",verifyToken, AssignCourseRoutes);
-app.use("/api",verifyToken, CourseRoutes);
-app.use("/api",verifyToken, feesRoutes);
+app.use("/api", AdmissionRoutes);
+app.use("/api", EnquiryRoutes);
+app.use("/api", AssignCourseRoutes);
+app.use("/api", CourseRoutes);
+app.use("/api", feesRoutes);
+app.use("/api", CourseTypeRoutes);
 
 app.listen(Port, () => {
   console.log(`Server is running on http://localhost:${Port}`);

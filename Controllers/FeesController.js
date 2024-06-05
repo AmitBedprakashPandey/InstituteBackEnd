@@ -30,7 +30,7 @@ const getFeesById = async (req, res) => {
     if (!student) {
       return res.status(404).json({ message: "Model not found" });
     }
-    res.status(200).json({ data: student });
+    res.status(200).json({ data: [student] });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
