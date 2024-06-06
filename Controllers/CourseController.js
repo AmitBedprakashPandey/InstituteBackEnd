@@ -24,7 +24,6 @@ exports.createCourse = async (req, res) => {
   try {
     const course = new Course(req.body);
     const newCourse = await Course.create(course);
-    console.log(newCourse);
     res.status(201).json({ message: "Create Succesfully", data: newCourse });
   } catch (err) {
     res.status(400).json({ message: err.message });

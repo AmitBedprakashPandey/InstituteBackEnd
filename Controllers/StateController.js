@@ -5,10 +5,8 @@ const createState = async (req, res) => {
   try {
     const data = new Model(req.body);
     const State = await Model.create(data);
-    console.log(State);
     res.status(200).json({ message: "Create Sucessfully", data: State });
   } catch (error) {
-    console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -67,7 +65,6 @@ const deleteStateById = async (req, res) => {
 // Delete a State by ID
 const StateByIdStatus = async (req, res) => {
   try {
-    console.log(req.params.status, req.body.status);
     const State = await Model.findByIdAndUpdate(
       { _id: req.params.status },
       { status: req.body.status }

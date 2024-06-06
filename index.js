@@ -47,6 +47,7 @@ const GenderRoutes = require("./Routes/GenderRoutes");
 const FoundationRoutes = require("./Routes/FoundationRoutes");
 const ReligionRoutes = require("./Routes/ReligionRoutes");
 const StateRoutes = require("./Routes/StateRoutes");
+const PaymentModeRoutes = require("./Routes/PaymentModeRoutes");
 
 // Routes
 app.use("/api/auth", authRoutes);
@@ -60,7 +61,7 @@ app.use("/api", GenderRoutes);
 app.use("/api", FoundationRoutes);
 app.use("/api", ReligionRoutes);
 app.use("/api", StateRoutes);
-
+app.use("/api", PaymentModeRoutes);
 app.listen(Port, () => {
   console.log(`Server is running on http://localhost:${Port}`);
 });

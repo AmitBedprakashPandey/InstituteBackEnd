@@ -7,7 +7,6 @@ const createEnquiry = async (req, res) => {
     const enquiry = await Enquiry.create(data);
     res.status(200).json({ message: "Create Sucessfully", data: enquiry });
   } catch (error) {
-    console.log(error);
     res.status(400).json({ message: error.message });
   }
 };

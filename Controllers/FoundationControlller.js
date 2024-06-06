@@ -5,10 +5,8 @@ const createFoundation = async (req, res) => {
   try {
     const data = new Model(req.body);
     const Foundation = await Model.create(data);
-    console.log(Foundation);
     res.status(200).json({ message: "Create Sucessfully", data: Foundation });
   } catch (error) {
-    console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -67,7 +65,6 @@ const deleteFoundationById = async (req, res) => {
 // Delete a Foundation by ID
 const FoundationByIdStatus = async (req, res) => {
   try {
-    console.log(req.params.status, req.body.status);
     const Foundation = await Model.findByIdAndUpdate(
       { _id: req.params.status },
       { status: req.body.status }

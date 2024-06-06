@@ -2,14 +2,11 @@ const Model = require("../Model/GenderModel");
 
 // Create a new gender
 const creategender = async (req, res) => {
-  console.log(req.body);
   try {
     const data = new Model(req.body);
     const gender = await Model.create(data);
-    console.log(gender);
     res.status(200).json({ message: "Create Sucessfully", data: gender });
   } catch (error) {
-    console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -68,7 +65,6 @@ const deletegenderById = async (req, res) => {
 // Delete a gender by ID
 const genderByIdStatus = async (req, res) => {
   try {
-    console.log(req.params.status, req.body.status);
     const gender = await Model.findByIdAndUpdate(
       { _id: req.params.status },
       { status: req.body.status }

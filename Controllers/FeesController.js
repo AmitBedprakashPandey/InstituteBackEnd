@@ -5,10 +5,8 @@ const createFees = async (req, res) => {
   try {
     const data = new Model(req.body);
     const student = await Model.create(data);
-    console.log(student);
     res.status(200).json({ message: "Create Sucessfully", data: student });
   } catch (error) {
-    console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -67,7 +65,6 @@ const deleteFeesById = async (req, res) => {
 // Delete a student by ID
 const FeesByIdStatus = async (req, res) => {
   try {
-    console.log(req.params.status,req.body.status);
     const student = await Model.findByIdAndUpdate(
       { _id: req.params.status },
       { status: req.body.status }

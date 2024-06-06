@@ -7,7 +7,6 @@ const createReligion = async (req, res) => {
     const Religion = await Model.create(data);    
     res.status(200).json({ message: "Create Sucessfully", data: Religion });
   } catch (error) {
-    console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -66,7 +65,6 @@ const deleteReligionById = async (req, res) => {
 // Delete a Religion by ID
 const ReligionByIdStatus = async (req, res) => {
   try {
-    console.log(req.params.status, req.body.status);
     const Religion = await Model.findByIdAndUpdate(
       { _id: req.params.status },
       { status: req.body.status }

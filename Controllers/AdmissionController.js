@@ -7,7 +7,6 @@ const createStudent = async (req, res) => {
     const student = await Student.create(data);    
     res.status(200).json({ message: "Create Sucessfully", data: student });
   } catch (error) {
-  console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -29,7 +28,6 @@ const getStudentById = async (req, res) => {
     if (!student) {
       return res.status(404).json({ message: "Student not found" });
     }
-    console.log(student);
     res.status(200).json(student);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -67,7 +65,6 @@ const deleteStudentById = async (req, res) => {
 // Delete a student by ID
 const StudentByIdStatus = async (req, res) => {
   try {
-    console.log(req.params.status,req.body.status);
     const student = await Student.findByIdAndUpdate(
       { _id: req.params.status },
       { status: req.body.status }
