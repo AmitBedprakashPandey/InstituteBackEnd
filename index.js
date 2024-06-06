@@ -43,6 +43,10 @@ const CourseRoutes = require("./Routes/CourseRoutes");
 const authRoutes = require("./Routes/AuthRoute");
 const feesRoutes = require("./Routes/FeesRoutes");
 const CourseTypeRoutes = require("./Routes/CourseTypeRoutes");
+const GenderRoutes = require("./Routes/GenderRoutes");
+const FoundationRoutes = require("./Routes/FoundationRoutes");
+const ReligionRoutes = require("./Routes/ReligionRoutes");
+const StateRoutes = require("./Routes/StateRoutes");
 
 // Routes
 app.use("/api/auth", authRoutes);
@@ -52,6 +56,10 @@ app.use("/api", AssignCourseRoutes);
 app.use("/api", CourseRoutes);
 app.use("/api", feesRoutes);
 app.use("/api", CourseTypeRoutes);
+app.use("/api", GenderRoutes);
+app.use("/api", FoundationRoutes);
+app.use("/api", ReligionRoutes);
+app.use("/api", StateRoutes);
 
 app.listen(Port, () => {
   console.log(`Server is running on http://localhost:${Port}`);
