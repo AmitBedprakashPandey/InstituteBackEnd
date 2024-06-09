@@ -13,6 +13,7 @@ router.get("/coursetype/:id", controller.getCourseTypeById);
 
 // Update a student by ID
 router.put("/coursetype/:id", controller.updateCourseType);
+router.put("/coursetype/status/:id", controller.updateCourseTypeStatus);
 
 // Delete a student by ID
 router.delete("/coursetype/:id", controller.deleteCourseType);

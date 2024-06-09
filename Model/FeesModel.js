@@ -9,10 +9,17 @@ const courseSchema = new mongoose.Schema({
   dicount: { type: Number },
   paidAmt: { type: Number },
   ApayDueAmt: { type: Number },
-  collecteBy: { type: String },
+  admissionFee: { type: Number },
+  annualFee: { type: Number },
+  tuitionFee: { type: Number },
+  transportFee: { type: Number },
+  examFee: { type: Number },
+  regFee: { type: Number },
+
+  collecteBy: { type: Number },
   remark: { type: String },
   studentId: { type: String },
-  userid:{ type: String ,require : true},
+  userid: { type: String, require: true },
 });
 
 const Course = mongoose.model("fees", courseSchema);

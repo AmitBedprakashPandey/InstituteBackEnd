@@ -49,6 +49,21 @@ exports.updateCourseType = async (req, res) => {
   }
 };
 
+exports.updateCourseTypeStatus = async (req, res) => {
+  try {
+    const updatedCourseType = await CourseType.findByIdAndUpdate(req.params.id,{status:req.body.status},
+      { new: true }
+    );
+    if (!updatedCourseType)
+      return res.status(404).json({ message: "CourseType not found" });
+    res
+      .status(200)
+      .json({ message: "Update Succesfully", data: {_id:updatedCourseType._id, status:updatedCourseType.status} });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 exports.deleteCourseType = async (req, res) => {
   try {
     const course = await CourseType.findByIdAndDelete(req.params.id);
