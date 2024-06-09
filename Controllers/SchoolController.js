@@ -4,10 +4,9 @@ const Model = require("../Model/SchoolModel");
 // Create a new School
 const createSchool = async (req, res) => {
   try {
-    console.log("from" ,req.body);
+    
     const data = new Model(req.body);
-    const School = await Model.create(data);
-    console.log(School);
+    const School = await Model.create(data);    
     res.status(200).json({ message: "Create Sucessfully", data: School });
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -31,7 +30,7 @@ const getSchoolById = async (req, res) => {
     if (!School) {
       return res.status(404).json({ message: "Model not found" });
     }
-    res.status(200).json([School]);
+    res.status(200).json({data:School});
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

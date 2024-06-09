@@ -15,8 +15,7 @@ const courseSchema = new mongoose.Schema({
   transportFee: { type: Number },
   examFee: { type: Number },
   regFee: { type: Number },
-
-  collecteBy: { type: Number },
+  collecteBy: { type: String },
   remark: { type: String },
   studentId: { type: String },
   userid: { type: String, require: true },

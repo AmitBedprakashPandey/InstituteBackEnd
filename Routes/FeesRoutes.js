@@ -15,7 +15,7 @@ router.get("/fees/:id", feesController.getFeesById);
 router.put("/fees/:id", feesController.updateFeesById);
 
 // Status
-router.put("/fees/:status", feesController.FeesByIdStatus);
+router.put("/fees/status/:status", feesController.FeesByIdStatus);
 
 // Delete a fees by ID
 router.delete("/fees/:id", feesController.deleteFeesById);

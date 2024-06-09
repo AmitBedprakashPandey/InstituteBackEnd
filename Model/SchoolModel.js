@@ -8,7 +8,7 @@ const schoolSchema = new mongoose.Schema({
   webiste: { type: String },
   email: { type: String },
   state: { type: String },
-
+  schoolStamp: { type: String },
   pincode: { type: Number },
   city: { type: String },
   phone: { type: Number },

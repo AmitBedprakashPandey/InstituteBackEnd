@@ -37,7 +37,8 @@ const getFeesById = async (req, res) => {
 // Update a student by ID
 const updateFeesById = async (req, res) => {
   try {
-    const student = await Model.findByIdAndUpdate(req.params.id, req.body, {
+    const data = new Model(req.body);
+    const student = await Model.findByIdAndUpdate(req.params.id, data, {
       new: true,
     });
     if (!student) {
