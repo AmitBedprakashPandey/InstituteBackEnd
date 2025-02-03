@@ -19,6 +19,7 @@ const courseSchema = new mongoose.Schema({
   remark: { type: String },
   studentId: { type: String },
   userid: { type: String, require: true },
+  schoolid: { type: String, require: true },
 });
 
 const Course = mongoose.model("fees", courseSchema);

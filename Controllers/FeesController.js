@@ -24,11 +24,11 @@ const getAllFees = async (req, res) => {
 // Get a single student by ID
 const getFeesById = async (req, res) => {
   try {
-    const student = await Model.findOne({ userid: req.params.id });
+    const student = await Model.find({ userid: req.params.id });
     if (!student) {
       return res.status(404).json({ message: "Model not found" });
     }
-    res.status(200).json({ data: [student] });
+    res.status(200).json({ data: student });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -78,6 +78,27 @@ const FeesByIdStatus = async (req, res) => {
   }
 };
 
+const findBalanceAmtbyStudentName = async (req, res) => {
+  try {
+    const { studentname, userid } = req.params;
+    console.log(studentname, userid);
+    const data = await Model.find({
+      studentname: studentname,
+      userid: userid,
+    });
+    console.log(data);
+    if (!data || data.length === 0) {
+      return res.status(404).json({ message: "No records found" });
+    }
+
+    const paidAmt = data?.reduce((acc, item) => acc + item.paidAmt, 0);
+    console.log(paidAmt);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createFees,
   getAllFees,
@@ -85,4 +106,5 @@ module.exports = {
   updateFeesById,
   deleteFeesById,
   FeesByIdStatus,
+  findBalanceAmtbyStudentName,
 };

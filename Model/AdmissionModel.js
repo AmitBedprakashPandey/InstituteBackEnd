@@ -6,6 +6,7 @@ const studentSchema = new mongoose.Schema({
   studentName: { type: String },
   fatherName: { type: String },
   motherName: { type: String },
+  course: { type: String },
   dob: { type: Date },
   regdDate: { type: Date, default: Date.now },
   mobileNo: { type: Number },

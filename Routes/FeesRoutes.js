@@ -11,6 +11,10 @@ router.get("/fees", feesController.getAllFees);
 // Get a single fees by ID
 router.get("/fees/:id", feesController.getFeesById);
 
+router.get(
+  "/fees/paidamt/:studentname/:userid",
+  feesController.findBalanceAmtbyStudentName
+);
 // Update a fees by ID
 router.put("/fees/:id", feesController.updateFeesById);
 

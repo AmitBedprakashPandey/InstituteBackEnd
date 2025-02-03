@@ -13,14 +13,17 @@ const userSchema = new mongoose.Schema({
   ogpass: {
     type: String,
     required: true,
+    required:true
   },
   status: {
     type: Boolean,
     default: false,
+    required:true
   },
   auth: {
     type: Boolean,
     default: false,
+    required:true
   },
   startDate: {
     type: Date,
